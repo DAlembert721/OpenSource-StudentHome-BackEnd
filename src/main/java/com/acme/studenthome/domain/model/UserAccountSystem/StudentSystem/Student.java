@@ -3,6 +3,7 @@ package com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem;
 import com.acme.studenthome.domain.model.LocationsSystem.District;
 import com.acme.studenthome.domain.model.UserAccountSystem.Account;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Size;
 @Entity
 @PrimaryKeyJoinColumn(name = "account_id")
 @Table(name = "students")
+@Data
 public class Student extends Account {
 
     @NotNull
@@ -32,4 +34,5 @@ public class Student extends Account {
     @JoinColumn(name = "district_id", nullable = false)
     @JsonIgnore
     private District district;
+
 }
