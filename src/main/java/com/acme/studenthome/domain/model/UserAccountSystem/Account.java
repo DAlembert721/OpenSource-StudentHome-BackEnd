@@ -35,7 +35,6 @@ public class Account extends AuditModel {
     private String dni;
 
     @NotNull
-    @Column(unique = true)
     private Long phone;
 
     /*   @OneToOne(fetch = FetchType.LAZY)

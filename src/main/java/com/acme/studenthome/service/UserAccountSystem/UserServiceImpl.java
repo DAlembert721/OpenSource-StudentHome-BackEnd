@@ -1,7 +1,7 @@
 package com.acme.studenthome.service.UserAccountSystem;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.User;
-import com.acme.studenthome.domain.repository.UserAccountSystem.UserRepository;
+import com.acme.studenthome.domain.repository.UserAccountSystemRepository.UserRepository;
 import com.acme.studenthome.domain.service.UserAccountSystem.UserService;
 import com.acme.studenthome.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
