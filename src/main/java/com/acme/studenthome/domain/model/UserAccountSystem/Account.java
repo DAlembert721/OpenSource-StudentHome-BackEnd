@@ -11,10 +11,12 @@ import javax.validation.constraints.Size;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "accounts")
 @Data
 public class Account extends AuditModel {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,9 +38,9 @@ public class Account extends AuditModel {
     @Column(unique = true)
     private Long phone;
 
- /*   @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;*/
+    /*   @OneToOne(fetch = FetchType.LAZY)
+       @JoinColumn(name = "user_id")
+       private User user;*/
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
