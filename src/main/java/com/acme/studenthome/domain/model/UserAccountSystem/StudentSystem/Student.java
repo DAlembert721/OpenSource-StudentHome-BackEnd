@@ -19,6 +19,10 @@ public class Student extends Account {
     @Size(max = 100)
     private String address;
 
+    @NotNull
+    @Size(max = 100)
+    private String image;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "education_center_id", nullable = false)
     @JsonIgnore
