@@ -1,8 +1,8 @@
-package com.acme.studenthome.controller.LocationsSystem;
+package com.acme.studenthome.controller.LocationsSystemController;
 
-import com.acme.studenthome.domain.model.LocationsSystem.District;
+import com.acme.studenthome.domain.model.LocationsSystem.Province;
 import com.acme.studenthome.domain.service.LocationsSystem.LocationService;
-import com.acme.studenthome.resource.LocationsSystem.DistrictResource;
+import com.acme.studenthome.resource.LocationsSystem.ProvinceResource;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-public class ProvinceDistrictsController {
+public class RegionProvincesController {
 
     @Autowired
     private ModelMapper mapper;
@@ -26,19 +26,18 @@ public class ProvinceDistrictsController {
     @Autowired
     private LocationService locationService;
 
-    @GetMapping("/provinces/{provinceId}/districts")
-    public Page<DistrictResource> getAllDistrictsByProvinceId(@PathVariable Long provinceId, Pageable pageable) {
-        Page<District> districtPage = locationService.getAllDistrictsByProvinceId(provinceId, pageable);
-        List<DistrictResource> resources = districtPage.getContent()
+    @GetMapping("/regions/{regionId}/provinces")
+    public Page<ProvinceResource> getAllProvincesByRegionId(@PathVariable Long regionId, Pageable pageable) {
+        Page<Province> provincePage = locationService.getAllProvincesByRegionId(regionId, pageable);
+        List<ProvinceResource> resources = provincePage.getContent()
                 .stream()
                 .map(this::convertToResource)
                 .collect(Collectors.toList());
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
-    private DistrictResource convertToResource(District entity) {
-        return mapper.map(entity, DistrictResource.class);
+    private ProvinceResource convertToResource(Province entity) {
+        return mapper.map(entity, ProvinceResource.class);
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.acme.studenthome.controller.UserAccountSystem;
+package com.acme.studenthome.controller.UserAccountSystemController;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.User;
 import com.acme.studenthome.domain.service.UserAccountSystem.UserService;

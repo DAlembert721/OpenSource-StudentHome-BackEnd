@@ -1,4 +1,4 @@
-package com.acme.studenthome.domain.repository.UserAccountSystem;
+package com.acme.studenthome.domain.repository.UserAccountSystemRepository;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.User;
 import org.springframework.data.jpa.repository.JpaRepository;

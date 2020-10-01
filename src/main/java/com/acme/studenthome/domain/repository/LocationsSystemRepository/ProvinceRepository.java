@@ -1,4 +1,4 @@
-package com.acme.studenthome.domain.repository.LocationsSystem;
+package com.acme.studenthome.domain.repository.LocationsSystemRepository;
 
 import com.acme.studenthome.domain.model.LocationsSystem.Province;
 import org.springframework.data.domain.Page;
