@@ -1,7 +1,6 @@
 package com.acme.studenthome.service.UserAccountSystem.StudentSystemService;
 
 import com.acme.studenthome.domain.model.LocationsSystem.District;
-import com.acme.studenthome.domain.model.UserAccountSystem.Account;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.EducationCenter;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
 import com.acme.studenthome.domain.model.UserAccountSystem.User;
@@ -9,7 +8,7 @@ import com.acme.studenthome.domain.repository.LocationsSystemRepository.District
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.StudentSystemRepository.EducationCenterRepository;
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.StudentSystemRepository.StudentRepository;
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.UserRepository;
-import com.acme.studenthome.domain.service.UserAccountSystem.StudentSystemService.StudentService;
+import com.acme.studenthome.domain.service.UserAccountSystemService.StudentSystemService.StudentService;
 import com.acme.studenthome.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -64,7 +63,7 @@ public class StudentServiceImpl implements StudentService {
             throw new ResourceNotFoundException("User", "Id", userId);
         }
         Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Account", "Id", studentId));
+                .orElseThrow(() -> new ResourceNotFoundException("Student", "Id", studentId));
         student.setDni(studentRequest.getDni());
         student.setFirstName(studentRequest.getFirstName());
         student.setLastName(studentRequest.getLastName());
@@ -76,6 +75,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public ResponseEntity<?> deleteStudent(Long userId, Long studentId) {
-        return null;
+        if (!userRepository.existsById(userId)) {
+            throw new ResourceNotFoundException("User", "Id", userId);
+        }
+        Student student = studentRepository.findByIdAndUserId(studentId, userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Student", "Id", studentId));
+        studentRepository.delete(student);
+        return ResponseEntity.ok().build();
     }
 }

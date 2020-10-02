@@ -1,9 +1,9 @@
 package com.acme.studenthome.controller.UserAccountSystemController;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.Account;
-import com.acme.studenthome.domain.service.UserAccountSystem.AccountService;
-import com.acme.studenthome.resource.UserAccountSystem.AccountResource;
-import com.acme.studenthome.resource.UserAccountSystem.SaveAccountResource;
+import com.acme.studenthome.domain.service.UserAccountSystemService.AccountService;
+import com.acme.studenthome.resource.UserAccountSystemResource.AccountResource;
+import com.acme.studenthome.resource.UserAccountSystemResource.SaveAccountResource;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
