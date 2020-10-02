@@ -3,6 +3,10 @@ package com.acme.studenthome.controller.SubscriptionSystemController;
 import com.acme.studenthome.domain.model.SuscriptionsSystem.Subscription;
 import com.acme.studenthome.domain.service.SubscriptionSystemService.SubscriptionService;
 import com.acme.studenthome.resource.SubscriptionSystemResource.SubscriptionResource;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,7 +30,14 @@ public class SubscriptionController {
     private SubscriptionService subscriptionService;
 
 
-
+    @Operation(summary = "Get Subscriptions",
+            description = "Get All Subscriptions by Page",
+            tags = "subscriptions")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "All subscriptions returned",
+                    content = @Content(mediaType = "application/json"))
+    })
     @GetMapping("/subscriptions")
     public Page<SubscriptionResource> getAllSubscriptions(Pageable pageable) {
         Page<Subscription> subscriptionPage = subscriptionService.getAllSubscriptions(pageable);

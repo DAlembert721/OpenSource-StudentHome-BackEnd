@@ -5,6 +5,10 @@ import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
 import com.acme.studenthome.domain.service.PropertiesSystemService.PropertyService;
 import com.acme.studenthome.resource.PropertiesSystemResource.PropertyResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SavePropertyResource;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,14 @@ public class LandLordPropertiesController {
     @Autowired
     private PropertyService propertyService;
 
+    @Operation(summary = "Get Properties of a Land Lord",
+            description = "Get All Properties of a Land Lord by Page",
+            tags = "landlords")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "All properties of a land lord returned",
+                    content = @Content(mediaType = "application/json"))
+    })
     @PostMapping("landlords/{landLordId}/properties")
     public PropertyResource createProperty(
             @PathVariable(name = "landLordId") Long langLordId,

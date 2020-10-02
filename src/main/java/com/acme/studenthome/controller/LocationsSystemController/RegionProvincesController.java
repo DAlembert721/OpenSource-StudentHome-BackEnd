@@ -3,6 +3,10 @@ package com.acme.studenthome.controller.LocationsSystemController;
 import com.acme.studenthome.domain.model.LocationsSystem.Province;
 import com.acme.studenthome.domain.service.LocationsSystemService.LocationService;
 import com.acme.studenthome.resource.LocationsSystem.ProvinceResource;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +30,14 @@ public class RegionProvincesController {
     @Autowired
     private LocationService locationService;
 
+    @Operation(summary = "Get Provinces of a Region",
+            description = "Get All Provinces of a Region by Page",
+            tags = "regions")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "All provinces of a region returned",
+                    content = @Content(mediaType = "application/json"))
+    })
     @GetMapping("/regions/{regionId}/provinces")
     public Page<ProvinceResource> getAllProvincesByRegionId(@PathVariable Long regionId, Pageable pageable) {
         Page<Province> provincePage = locationService.getAllProvincesByRegionId(regionId, pageable);

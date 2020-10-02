@@ -4,6 +4,10 @@ import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.service.PropertiesSystemService.PropertyService;
 import com.acme.studenthome.resource.PropertiesSystemResource.PropertyResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SavePropertyResource;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +32,14 @@ public class PropertyController {
     @Autowired
     private PropertyService propertyService;
 
+    @Operation(summary = "Get Properties",
+            description = "Get All Properties by Page",
+            tags = "properties")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "All properties returned",
+                    content = @Content(mediaType = "application/json"))
+    })
     @GetMapping("/properties")
     public Page<PropertyResource> getAllProperties(Pageable pageable) {
         Page<Property> propertyPage = propertyService.getAllProperties(pageable);
