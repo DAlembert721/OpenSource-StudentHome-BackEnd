@@ -1,7 +1,7 @@
 package com.acme.studenthome.controller.LocationsSystemController;
 
 import com.acme.studenthome.domain.model.LocationsSystem.District;
-import com.acme.studenthome.domain.service.LocationsSystem.LocationService;
+import com.acme.studenthome.domain.service.LocationsSystemService.LocationService;
 import com.acme.studenthome.resource.LocationsSystem.DistrictResource;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

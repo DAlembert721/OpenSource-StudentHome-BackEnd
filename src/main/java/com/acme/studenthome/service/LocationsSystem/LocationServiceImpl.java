@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LocationServiceImpl implements com.acme.studenthome.domain.service.LocationsSystem.LocationService {
+public class LocationServiceImpl implements com.acme.studenthome.domain.service.LocationsSystemService.LocationService {
 
     @Autowired
     private RegionRepository regionRepository;

@@ -1,4 +1,4 @@
-package com.acme.studenthome.domain.service.LocationsSystem;
+package com.acme.studenthome.domain.service.LocationsSystemService;
 
 import com.acme.studenthome.domain.model.LocationsSystem.District;
 import com.acme.studenthome.domain.model.LocationsSystem.Province;

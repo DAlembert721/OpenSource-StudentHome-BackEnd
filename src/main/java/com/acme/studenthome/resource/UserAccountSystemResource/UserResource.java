@@ -1,4 +1,4 @@
-package com.acme.studenthome.resource.UserAccountSystem;
+package com.acme.studenthome.resource.UserAccountSystemResource;
 
 import lombok.Data;
 

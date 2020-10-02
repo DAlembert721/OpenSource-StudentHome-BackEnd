@@ -1,9 +1,8 @@
-package com.acme.studenthome.resource.UserAccountSystem;
+package com.acme.studenthome.resource.UserAccountSystemResource;
 
 import lombok.Data;
 import org.apache.tomcat.jni.Address;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 

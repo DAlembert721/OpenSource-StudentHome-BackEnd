@@ -1,7 +1,6 @@
-package com.acme.studenthome.domain.service.UserAccountSystem;
+package com.acme.studenthome.domain.service.UserAccountSystemService;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.Account;
-import com.acme.studenthome.domain.model.UserAccountSystem.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

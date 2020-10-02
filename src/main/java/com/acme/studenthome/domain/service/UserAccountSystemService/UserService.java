@@ -1,4 +1,4 @@
-package com.acme.studenthome.domain.service.UserAccountSystem;
+package com.acme.studenthome.domain.service.UserAccountSystemService;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.User;
 import org.springframework.http.ResponseEntity;

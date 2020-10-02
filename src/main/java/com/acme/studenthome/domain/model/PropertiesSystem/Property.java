@@ -20,7 +20,7 @@ public class Property {
     private Long id;
 
     @NotNull
-    private Long nRoom;
+    private Long rooms;
 
     @NotNull
     private Float size;
@@ -33,7 +33,7 @@ public class Property {
 
     @NotNull
     @Size(max = 100)
-    private String string;
+    private String address;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},
