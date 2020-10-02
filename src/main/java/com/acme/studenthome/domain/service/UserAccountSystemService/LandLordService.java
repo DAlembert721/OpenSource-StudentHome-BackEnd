@@ -1,4 +1,4 @@
-package com.acme.studenthome.domain.service.UserAccountSystem;
+package com.acme.studenthome.domain.service.UserAccountSystemService;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
@@ -10,7 +10,7 @@ public interface LandLordService {
 
     LandLord createLandLord(Long userId, Long subscriptionId, LandLord landLord);
 
-    LandLord updateLandLord(Long userId, Long landLordId,Student landLordRequest);
+    LandLord updateLandLord(Long userId, Long landLordId,LandLord landLordRequest);
 
     ResponseEntity<?> deleteLandLord(Long userId, Long landLordId);
 

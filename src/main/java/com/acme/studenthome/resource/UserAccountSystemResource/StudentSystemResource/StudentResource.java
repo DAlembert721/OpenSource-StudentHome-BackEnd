@@ -1,6 +1,7 @@
-package com.acme.studenthome.resource.UserAccountSystem.StudentSystemResource;
+package com.acme.studenthome.resource.UserAccountSystemResource.StudentSystemResource;
 
-import com.acme.studenthome.resource.UserAccountSystem.AccountResource;
+
+import com.acme.studenthome.resource.UserAccountSystemResource.AccountResource;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
