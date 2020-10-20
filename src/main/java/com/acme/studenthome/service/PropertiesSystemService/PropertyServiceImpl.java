@@ -5,6 +5,7 @@ import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
 import com.acme.studenthome.domain.repository.LocationsSystemRepository.DistrictRepository;
 import com.acme.studenthome.domain.repository.PropertiesSystemRepository.PropertyRepository;
+import com.acme.studenthome.domain.repository.PropertiesSystemRepository.ServiceRepository;
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.LandLordRepository;
 import com.acme.studenthome.domain.service.PropertiesSystemService.PropertyService;
 import com.acme.studenthome.exception.ResourceNotFoundException;
@@ -25,6 +26,9 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Autowired
     private DistrictRepository districtRepository;
+
+    @Autowired
+    private ServiceRepository serviceRepository;
 
     @Override
     public Page<Property> getAllProperties(Pageable pageable) {
@@ -75,5 +79,27 @@ public class PropertyServiceImpl implements PropertyService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Property", "Id", propertyId));
         return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public Property assignPropertyService(Long propertyId, Long serviceId) {
+        com.acme.studenthome.domain.model.PropertiesSystem.Service service = serviceRepository.findById(serviceId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Service", "Id", serviceId));
+        return propertyRepository.findById(propertyId)
+                .map(property -> propertyRepository.save(property.addService(service)))
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Property", "Id", propertyId));
+    }
+
+    @Override
+    public Property unAssignPropertyService(Long propertyId, Long serviceId) {
+        com.acme.studenthome.domain.model.PropertiesSystem.Service service = serviceRepository.findById(serviceId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Service", "Id", serviceId));
+        return propertyRepository.findById(propertyId)
+                .map(property -> propertyRepository.save(property.removeService(service)))
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Property", "Id", propertyId));
     }
 }

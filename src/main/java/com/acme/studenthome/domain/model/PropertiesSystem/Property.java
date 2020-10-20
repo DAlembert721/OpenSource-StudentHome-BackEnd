@@ -36,8 +36,10 @@ public class Property {
     private String address;
 
     @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-            mappedBy = "properties")
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "property_services",
+            joinColumns = { @JoinColumn(name = "service_id")},
+            inverseJoinColumns = { @JoinColumn(name = "property_id")})
     private List<Service> services;
 
 
@@ -50,6 +52,22 @@ public class Property {
     @JoinColumn(name = "land_lord_id", nullable = false)
     @JsonIgnore
     private LandLord landLord;
+
+    public boolean haveService(Service service) {
+        return this.getServices().contains(service);
+    }
+
+    public Property addService(Service service) {
+        if(!this.haveService(service))
+            this.getServices().add(service);
+        return this;
+    }
+
+    public Property removeService(Service service) {
+        if(this.haveService(service))
+            this.getServices().remove(service);
+        return this;
+    }
 
 }
 

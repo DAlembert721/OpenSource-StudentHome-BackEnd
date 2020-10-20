@@ -12,4 +12,6 @@ public interface PropertyService {
     Property getPropertyById(Long propertyId);
     Property updateProperty(Long landLordId, Long propertyId, Property propertyRequest);
     ResponseEntity<?> deleteProperty(Long landLordId, Long propertyId);
+    Property assignPropertyService(Long propertyId, Long serviceId);
+    Property unAssignPropertyService(Long propertyId, Long serviceId);
 }

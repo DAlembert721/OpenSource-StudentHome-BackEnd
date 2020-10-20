@@ -24,11 +24,10 @@ public class Service {
     @Size(max = 100)
     private String description;
 
+
     @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "property_services",
-            joinColumns = { @JoinColumn(name = "service_id")},
-            inverseJoinColumns = { @JoinColumn(name = "property_id")})
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            mappedBy = "services")
     private List<Property> properties;
 
 }
