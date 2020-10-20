@@ -11,9 +11,12 @@ import com.acme.studenthome.domain.service.PropertiesSystemService.PropertyServi
 import com.acme.studenthome.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
@@ -101,5 +104,16 @@ public class PropertyServiceImpl implements PropertyService {
                 .map(property -> propertyRepository.save(property.removeService(service)))
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Property", "Id", propertyId));
+    }
+
+    @Override
+    public Page<Property> getAllPropertiesByServiceId(Long serviceId, Pageable pageable) {
+        return serviceRepository.findById(serviceId)
+                .map(service -> {
+                    List<Property> properties = service.getProperties();
+                    return new PageImpl<>(properties, pageable, properties.size());
+                })
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Service", "Id", serviceId));
     }
 }

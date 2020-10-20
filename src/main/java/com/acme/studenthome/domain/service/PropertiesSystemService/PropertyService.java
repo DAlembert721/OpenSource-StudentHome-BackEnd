@@ -14,4 +14,5 @@ public interface PropertyService {
     ResponseEntity<?> deleteProperty(Long landLordId, Long propertyId);
     Property assignPropertyService(Long propertyId, Long serviceId);
     Property unAssignPropertyService(Long propertyId, Long serviceId);
+    Page<Property> getAllPropertiesByServiceId(Long serviceId, Pageable pageable);
 }

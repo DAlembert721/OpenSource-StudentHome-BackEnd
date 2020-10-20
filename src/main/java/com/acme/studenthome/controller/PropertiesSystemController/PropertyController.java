@@ -15,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +44,19 @@ public class PropertyController {
     @GetMapping("/properties")
     public Page<PropertyResource> getAllProperties(Pageable pageable) {
         Page<Property> propertyPage = propertyService.getAllProperties(pageable);
+        List<PropertyResource> resources = propertyPage.getContent()
+                .stream()
+                .map(this::convertToResource)
+                .collect(Collectors.toList());
+        return new PageImpl<>(resources, pageable, resources.size());
+    }
+
+    @Operation(summary = "Get Properties By Service Id",
+            description = "Get All Properties given a Service Id",
+            tags = "services")
+    @GetMapping("/services/{serviceId}/properties")
+    public Page<PropertyResource> getAllPropertiesByServiceID(@PathVariable(name = "serviceId") Long serviceId, Pageable pageable) {
+        Page<Property> propertyPage = propertyService.getAllPropertiesByServiceId(serviceId, pageable);
         List<PropertyResource> resources = propertyPage.getContent()
                 .stream()
                 .map(this::convertToResource)
