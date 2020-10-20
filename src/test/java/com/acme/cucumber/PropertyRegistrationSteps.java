@@ -4,8 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.web.client.RestTemplate;
 
 public class PropertyRegistrationSteps {
+    @LocalServerPort
+    private int port;
+    private RestTemplate restTemplate = new RestTemplate();
+    private String postUrl = "http://localhost";
     @Given("a landlord in the register property's view")
     public void aLandlordInTheRegisterPropertySView() {
     }
