@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "property_comments")
@@ -20,6 +21,7 @@ public class PropertyComment {
     private Long score;
 
     @NotNull
+    @Size(max = 250)
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
