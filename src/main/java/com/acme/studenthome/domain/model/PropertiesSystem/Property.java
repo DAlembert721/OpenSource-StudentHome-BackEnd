@@ -53,6 +53,78 @@ public class Property {
     @JsonIgnore
     private LandLord landLord;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(Long rooms) {
+        this.rooms = rooms;
+    }
+
+    public Float getSize() {
+        return size;
+    }
+
+    public void setSize(Float size) {
+        this.size = size;
+    }
+
+    public Float getCost() {
+        return cost;
+    }
+
+    public void setCost(Float cost) {
+        this.cost = cost;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public List<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Service> services) {
+        this.services = services;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
+
+    public LandLord getLandLord() {
+        return landLord;
+    }
+
+    public void setLandLord(LandLord landLord) {
+        this.landLord = landLord;
+    }
+
     public boolean haveService(Service service) {
         return this.getServices().contains(service);
     }

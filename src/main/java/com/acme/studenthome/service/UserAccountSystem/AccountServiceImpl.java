@@ -2,21 +2,15 @@ package com.acme.studenthome.service.UserAccountSystem;
 
 import com.acme.studenthome.domain.model.UserAccountSystem.Account;
 import com.acme.studenthome.domain.model.UserAccountSystem.User;
-
-
-
-
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.AccountRepository;
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.UserRepository;
 import com.acme.studenthome.domain.service.UserAccountSystemService.AccountService;
-
 import com.acme.studenthome.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class AccountServiceImpl implements AccountService {

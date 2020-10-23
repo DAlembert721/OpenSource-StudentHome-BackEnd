@@ -7,7 +7,7 @@ public interface StudentService {
 
     Student getStudentByIdAndUserId(Long studentId, Long userId);
 
-    Student createStudent(Long userId, Long educationCenterId, Long districtId,Student student);
+    Student createStudent(Long userId, Long educationCenterId, Long districtId, Student student);
 
     Student updateStudent(Long userId, Long studentId,Student studentRequest);
 

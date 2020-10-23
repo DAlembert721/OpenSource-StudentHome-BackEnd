@@ -35,4 +35,35 @@ public class Student extends Account {
     @JsonIgnore
     private District district;
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public EducationCenter getEducationCenter() {
+        return educationCenter;
+    }
+
+    public void setEducationCenter(EducationCenter educationCenter) {
+        this.educationCenter = educationCenter;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
 }

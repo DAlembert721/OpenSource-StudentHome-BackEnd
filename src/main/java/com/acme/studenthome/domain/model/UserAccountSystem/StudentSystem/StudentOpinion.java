@@ -34,5 +34,43 @@ public class StudentOpinion {
     @JsonIgnore
     private Student student;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getScore() {
+        return score;
+    }
+
+    public void setScore(Long score) {
+        this.score = score;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LandLord getLandLord() {
+        return landLord;
+    }
+
+    public void setLandLord(LandLord landLord) {
+        this.landLord = landLord;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }

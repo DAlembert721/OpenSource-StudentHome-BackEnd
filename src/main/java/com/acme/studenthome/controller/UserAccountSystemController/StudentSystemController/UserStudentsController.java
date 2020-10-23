@@ -36,7 +36,7 @@ public class UserStudentsController {
                     content = @Content(mediaType = "application/json"))
     })
     @GetMapping("/users/{userId}/students/{studentId}")
-    public StudentResource getLandlordByIdAndUserId(@PathVariable(name = "studentId") Long studentId,
+    public StudentResource getStudentByIdAndUserId(@PathVariable(name = "studentId") Long studentId,
                                                     @PathVariable(name = "userId") Long userId) {
         return convertToResource(studentService.getStudentByIdAndUserId(studentId, userId));
     }

@@ -37,10 +37,10 @@ public class LandLordPropertiesController {
     })
     @PostMapping("landlords/{landLordId}/properties")
     public PropertyResource createProperty(
-            @PathVariable(name = "landLordId") Long langLordId,
+            @PathVariable(name = "landLordId") Long landLordId,
             @Valid @RequestBody SavePropertyResource resource) {
         Property property = convertToEntity(resource);
-        return convertToResource(propertyService.createProperty(langLordId,resource.getDistrictId(), property));
+        return convertToResource(propertyService.createProperty(landLordId,resource.getDistrictId(), property));
 
     }
 

@@ -12,4 +12,12 @@ public class SaveLandLordResource extends SaveAccountResource {
 
     @NotNull
     private Long subscriptionId;
+
+    public Long getSubscriptionId() {
+        return subscriptionId;
+    }
+
+    public void setSubscriptionId(Long subscriptionId) {
+        this.subscriptionId = subscriptionId;
+    }
 }
