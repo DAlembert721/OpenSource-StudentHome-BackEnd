@@ -3,11 +3,13 @@ package com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem;
 import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+//@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "student_opinions")
 @Data
@@ -34,5 +36,43 @@ public class StudentOpinion {
     @JsonIgnore
     private Student student;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LandLord getLandLord() {
+        return landLord;
+    }
+
+    public void setLandLord(LandLord landLord) {
+        this.landLord = landLord;
+    }
+
+    public Long getScore() {
+        return score;
+    }
+
+    public void setScore(Long score) {
+        this.score = score;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 }
