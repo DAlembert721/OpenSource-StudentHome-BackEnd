@@ -40,7 +40,7 @@ public class LandLordPropertiesController {
             @PathVariable(name = "landLordId") Long landLordId,
             @Valid @RequestBody SavePropertyResource resource) {
         Property property = convertToEntity(resource);
-        return convertToResource(propertyService.createProperty(landLordId,resource.getDistrictId(), property));
+        return convertToResource(propertyService.createProperty(landLordId,resource.getPlace(), property));
 
     }
 
