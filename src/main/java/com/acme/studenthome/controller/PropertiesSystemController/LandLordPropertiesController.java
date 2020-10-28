@@ -27,12 +27,12 @@ public class LandLordPropertiesController {
     @Autowired
     private PropertyService propertyService;
 
-    @Operation(summary = "Get Properties of a Land Lord",
-            description = "Get All Properties of a Land Lord by Page",
+    @Operation(summary = "Post Property of a Land Lord",
+            description = "Post AProperty of a Land Lord",
             tags = "landlords")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
-                    description = "All properties of a land lord returned",
+                    description = "Property created",
                     content = @Content(mediaType = "application/json"))
     })
     @PostMapping("landlords/{landLordId}/properties")
@@ -40,7 +40,7 @@ public class LandLordPropertiesController {
             @PathVariable(name = "landLordId") Long langLordId,
             @Valid @RequestBody SavePropertyResource resource) {
         Property property = convertToEntity(resource);
-        return convertToResource(propertyService.createProperty(langLordId,resource.getDistrictId(), property));
+        return convertToResource(propertyService.createProperty(langLordId,resource.getPlace(), property));
 
     }
 

@@ -5,21 +5,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.acme.studenthome.StudentHomeApplication;
+import io.cucumber.java.en.And;
 import io.cucumber.spring.CucumberContextConfiguration;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 @CucumberContextConfiguration
 @SpringBootTest(classes = StudentHomeApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class SpringIntegrationTest {
     static ResponseResults latestResponse = null;
+    static HttpStatus response;
 
     @Autowired
     protected RestTemplate restTemplate;
@@ -42,26 +49,18 @@ public class SpringIntegrationTest {
         });
     }
 
-    void executePost(String url, String body) throws IOException {
-        final Map<String, String> headers = new HashMap<>();
-        headers.put("Accept", "application/json");
-        final HeaderSettingCallback requestCallback = new HeaderSettingCallback(headers);
-        requestCallback.setBody(body);
-        final ResponseResultErrorHandler errorHandler = new ResponseResultErrorHandler();
-
-        if (restTemplate == null) {
-            restTemplate = new RestTemplate();
+    void executePost(String url, Object body) throws IOException {
+        if (body != null){
+            HttpEntity<Object> request = new HttpEntity<>(body);
+            response = restTemplate
+                    .exchange(BASE_URL+url, HttpMethod.POST, request, String.class).getStatusCode();
+            String a = "";
+        }
+        else {
+            response = HttpStatus.BAD_REQUEST;
         }
 
-        restTemplate.setErrorHandler(errorHandler);
-        latestResponse = restTemplate
-                .execute( BASE_URL + url, HttpMethod.POST, requestCallback, response -> {
-                    if (errorHandler.hadError) {
-                        return (errorHandler.getResults());
-                    } else {
-                        return (new ResponseResults(response));
-                    }
-                });
+
     }
 
     private static class ResponseResultErrorHandler implements ResponseErrorHandler {

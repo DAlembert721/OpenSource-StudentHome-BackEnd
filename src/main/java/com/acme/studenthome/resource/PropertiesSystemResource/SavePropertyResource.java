@@ -23,5 +23,5 @@ public class SavePropertyResource {
     @Size(max = 100)
     private String address;
 
-    private Long districtId;
+    private Long place;
 }
