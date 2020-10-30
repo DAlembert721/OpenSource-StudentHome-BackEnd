@@ -26,7 +26,7 @@ public class StudentOpinionController {
     @Autowired
     private StudentOpinionService studentOpinionService;
 
-    @GetMapping("studentOpinions")
+    @GetMapping("opinions")
     public Page<StudentOpinionResource> getAllStudentOpinion( Pageable pageable) {
         Page<StudentOpinion> studentOpinionPage =
                 studentOpinionService.getAllStudentOpinions(pageable);
@@ -35,7 +35,7 @@ public class StudentOpinionController {
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
-    @GetMapping("landlords/{landLordId}/studentOpinions")
+    @GetMapping("landlords/{landLordId}/opinions")
     public Page<StudentOpinionResource> getAllStudentOpinionByLandLord(
             @PathVariable Long landLordId, Pageable pageable) {
         Page<StudentOpinion> studentOpinionPage =
@@ -44,7 +44,7 @@ public class StudentOpinionController {
                 this::convertToResource).collect(Collectors.toList());
         return new PageImpl<>(resources, pageable, resources.size());
     }
-    @GetMapping("students/{studentId}/studentOpinions")
+    @GetMapping("students/{studentId}/opinions")
     public Page<StudentOpinionResource> getAllStudentOpinionByStudent(
             @PathVariable Long studentId, Pageable pageable) {
         Page<StudentOpinion> studentOpinionPage =
@@ -53,7 +53,7 @@ public class StudentOpinionController {
                 this::convertToResource).collect(Collectors.toList());
         return new PageImpl<>(resources, pageable, resources.size());
     }
-    @GetMapping("landlords/{landLordId}/students/{studentId}/studentOpinions")
+    @GetMapping("landlords/{landLordId}/students/{studentId}/opinions")
     public Page<StudentOpinionResource> getAllStudentOpinionByLandLordAndStudent(
             @PathVariable (name = "landLordId") Long landLordId,
             @PathVariable (name = "studentId") Long studentId, Pageable pageable) {
@@ -64,8 +64,8 @@ public class StudentOpinionController {
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
-    @GetMapping("landlords/{landLordId}/students/{studentId}/studentOpinions/{studentOpinionsId}")
-    public StudentOpinionResource getStudentOpinionsByIdAndlandLordAndStudent(
+    @GetMapping("landlords/{landLordId}/students/{studentId}/opinions/{studentOpinionsId}")
+    public StudentOpinionResource getStudentOpinionsByIdAndLandLordIdAndStudentId(
             @PathVariable (name = "landLordId") Long landLordId,
             @PathVariable (name = "studentId") Long studentId,
             @PathVariable(name = "studentOpinionsId") Long studentOpinionsId) {
@@ -74,7 +74,7 @@ public class StudentOpinionController {
                         studentOpinionsId,studentId,landLordId));
     }
 
-    @PostMapping("landlords/{landLordId}/students/{studentId}/studentOpinions")
+    @PostMapping("landlords/{landLordId}/students/{studentId}/opinions")
     public StudentOpinionResource createStudentOpinion(
             @PathVariable (name = "landLordId") Long landLordId,
             @PathVariable (name = "studentId") Long studentId,
@@ -83,7 +83,7 @@ public class StudentOpinionController {
                 studentId,landLordId, convertToEntity(resource)));
     }
 
-    @PutMapping("landlords/{landLordId}/students/{studentId}/studentOpinions/{studentOpinionsId}")
+    @PutMapping("landlords/{landLordId}/students/{studentId}/opinions/{studentOpinionsId}")
     public StudentOpinionResource updateStudentOpinion(
             @PathVariable (name = "landLordId") Long landLordId,
             @PathVariable (name = "studentId") Long studentId,
@@ -93,7 +93,7 @@ public class StudentOpinionController {
                 studentOpinionsId,studentId,landLordId,convertToEntity(resource)));
     }
 
-    @DeleteMapping("landlords/{landLordId}/students/{studentId}/studentOpinions/{studentOpinionsId}")
+    @DeleteMapping("landlords/{landLordId}/students/{studentId}/opinions/{studentOpinionsId}")
     public ResponseEntity<?> deleteStudentOpinion(
             @PathVariable (name = "landLordId") Long landLordId,
             @PathVariable (name = "studentId") Long studentId,
