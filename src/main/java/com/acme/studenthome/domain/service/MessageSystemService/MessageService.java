@@ -15,6 +15,4 @@ public interface MessageService {
     Message getMessageByIdAndSenderIdAndReceiverId(Long messageId,Long senderId, Long receiverId);
     Message updateMessage(Long messageId, Long senderId, Long receiverId, Message messageRequest);
     ResponseEntity<?> deleteMessage(Long messageId, Long senderId, Long receiverId);
-
-    void sendEmail(Message message);
 }

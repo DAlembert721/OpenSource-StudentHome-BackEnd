@@ -82,11 +82,6 @@ public class MessageServiceImpl implements MessageService {
         }).orElseThrow(() -> new ResourceNotFoundException("Message", "Id", messageId));
     }
 
-    @Override
-    public void sendEmail(Message message) {
-
-    }
-
     public void SenderAndReceiverExist(Long senderId, Long receiverId) {
         if (!senderRepository.existsById(senderId))
             throw new ResourceNotFoundException("Sender", "Id", senderId);
