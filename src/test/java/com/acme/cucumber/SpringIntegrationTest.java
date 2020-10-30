@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.acme.studenthome.StudentHomeApplication;
+import io.cucumber.java.en.And;
 import io.cucumber.spring.CucumberContextConfiguration;
 
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 @CucumberContextConfiguration
 @SpringBootTest(classes = StudentHomeApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)

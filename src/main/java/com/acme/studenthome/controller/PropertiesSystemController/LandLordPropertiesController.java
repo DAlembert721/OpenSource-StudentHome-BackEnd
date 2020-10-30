@@ -27,12 +27,12 @@ public class LandLordPropertiesController {
     @Autowired
     private PropertyService propertyService;
 
-    @Operation(summary = "Get Properties of a Land Lord",
-            description = "Get All Properties of a Land Lord by Page",
+    @Operation(summary = "Post Property of a Land Lord",
+            description = "Post AProperty of a Land Lord",
             tags = "landlords")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",
-                    description = "All properties of a land lord returned",
+                    description = "Property created",
                     content = @Content(mediaType = "application/json"))
     })
     @PostMapping("landlords/{landLordId}/properties")

@@ -24,5 +24,4 @@ public class SavePropertyResource {
     private String address;
 
     private Long place;
-
 }
