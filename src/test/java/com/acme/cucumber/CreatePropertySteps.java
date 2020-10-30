@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
 
@@ -43,7 +44,6 @@ public class CreatePropertySteps extends SpringIntegrationTest{
     @Then("the system promotes the ad of the property")
     public void theSystemPromotesTheAdOfTheProperty() {
     }
-
 
 
     @And("the information entered is incorrect")
