@@ -100,6 +100,7 @@ public class UserStudentsController {
             protected void configure() {
                 map().setDistrictName(source.getDistrict().getName());
                 map().setEducationCenterName(source.getEducationCenter().getName());
+                map().setEmail(source.getUser().getEmail());
             }
         });
     }

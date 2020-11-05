@@ -5,6 +5,7 @@ import lombok.Data;
 
 @Data
 public class AccountResource {
+    private Long Id;
 
     private String firstName;
 
@@ -13,4 +14,6 @@ public class AccountResource {
     private String dni;
 
     private Long phone;
+
+    private String email;
 }
