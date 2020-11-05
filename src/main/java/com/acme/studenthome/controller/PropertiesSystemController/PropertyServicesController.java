@@ -14,7 +14,7 @@ import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("/api")
-public class PropertyServiceController {
+public class PropertyServicesController {
     @Autowired
     private ModelMapper mapper;
 

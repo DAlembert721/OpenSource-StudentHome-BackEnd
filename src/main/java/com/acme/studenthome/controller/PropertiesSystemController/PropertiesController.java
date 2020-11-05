@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-public class PropertyController {
+public class PropertiesController {
 
     @Autowired
     private ModelMapper mapper;

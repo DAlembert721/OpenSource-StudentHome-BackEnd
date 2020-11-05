@@ -2,7 +2,8 @@ package com.acme.studenthome.controller.LocationsSystemController;
 
 import com.acme.studenthome.domain.model.LocationsSystem.District;
 import com.acme.studenthome.domain.service.LocationsSystemService.LocationService;
-import com.acme.studenthome.resource.LocationsSystem.DistrictResource;
+
+import com.acme.studenthome.resource.LocationSystemResource.DistrictResource;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
