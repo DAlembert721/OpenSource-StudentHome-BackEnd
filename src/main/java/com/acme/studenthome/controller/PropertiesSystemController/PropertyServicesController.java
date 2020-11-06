@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class PropertyServicesController {
     @Autowired

@@ -22,7 +22,7 @@ public class Student extends Account {
     private String address;
 
     @NotNull
-    @Size(max = 100)
+    @Size(max = 250)
     private String image;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

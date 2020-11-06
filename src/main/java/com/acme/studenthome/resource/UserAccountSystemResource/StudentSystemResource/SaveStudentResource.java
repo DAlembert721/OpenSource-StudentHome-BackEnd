@@ -17,7 +17,7 @@ public class SaveStudentResource extends AccountResource {
     private String address;
 
     @NotNull
-    @Size(max = 100)
+    @Size(max = 250)
     private String image;
 
     @NotNull

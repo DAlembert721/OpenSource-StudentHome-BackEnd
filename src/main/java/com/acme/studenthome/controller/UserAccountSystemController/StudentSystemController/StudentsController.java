@@ -6,13 +6,11 @@ import com.acme.studenthome.resource.UserAccountSystemResource.StudentSystemReso
 import com.acme.studenthome.resource.UserAccountSystemResource.StudentSystemResource.StudentResource;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class StudentsController {
     @Autowired
     private ModelMapper mapper;
