@@ -83,4 +83,12 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.delete(student);
         return ResponseEntity.ok().build();
     }
+
+    @Override
+    public Student getStudentById(Long studentId) {
+        return studentRepository.findById(studentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Student", "Id", studentId));
+    }
+
 }
