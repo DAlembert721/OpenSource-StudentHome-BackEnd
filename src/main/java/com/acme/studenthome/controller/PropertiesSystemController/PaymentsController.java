@@ -34,14 +34,13 @@ public class PaymentsController {
 
     @Operation(summary = "Post Payment",
             description = "Post A New Payment",
-            tags = "students")
-    @PostMapping("/students/{studentId}/properties/{propertyId}/payments")
+            tags = "contracts")
+    @PostMapping("/contacts/{contractId}/payments")
     public PaymentResource createPayment(
-            @PathVariable(name = "studentId") Long studentId,
-            @PathVariable(name = "propertyId") Long propertyId,
+            @PathVariable(name = "contractId") Long contractId,
             @RequestBody @Valid SavePaymentResource paymentResource) {
         Payment payment = convertToEntity(paymentResource);
-        return convertToResource(paymentService.createPayment(studentId, propertyId, payment));
+        return convertToResource(paymentService.createPayment(contractId, payment));
     }
 
     @Operation(summary = "Update Payment By Payment Id",

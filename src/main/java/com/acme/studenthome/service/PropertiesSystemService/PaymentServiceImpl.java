@@ -1,8 +1,10 @@
 package com.acme.studenthome.service.PropertiesSystemService;
 
+import com.acme.studenthome.domain.model.PropertiesSystem.Contract;
 import com.acme.studenthome.domain.model.PropertiesSystem.Payment;
 import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
+import com.acme.studenthome.domain.repository.PropertiesSystemRepository.ContractRepository;
 import com.acme.studenthome.domain.repository.PropertiesSystemRepository.PaymentRepository;
 import com.acme.studenthome.domain.repository.PropertiesSystemRepository.PropertyRepository;
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.StudentSystemRepository.StudentRepository;
@@ -25,16 +27,15 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private ContractRepository contractRepository;
+
     @Override
-    public Payment createPayment(Long propertyId, Long studentId, Payment payment) {
-        Property property = propertyRepository.findById(propertyId)
+    public Payment createPayment(Long contractId, Payment payment) {
+        Contract contract = contractRepository.findById(contractId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Property", "Id", propertyId));
-        Student student = studentRepository.findById(studentId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Student", "Id", studentId));
-        payment.setProperty(property);
-        payment.setStudent(student);
+                        new ResourceNotFoundException("Contract", "Id", contractId));
+        payment.setContract(contract);
         return paymentRepository.save(payment);
     }
 
@@ -50,7 +51,6 @@ public class PaymentServiceImpl implements PaymentService {
         Payment payment = paymentRepository.findById(paymentId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Payment", "Id", paymentId));
-        payment.setAmount(resource.getAmount());
         payment.setChecked(resource.getChecked());
         payment.setImage(resource.getImage());
         return paymentRepository.save(payment);
@@ -66,16 +66,12 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Page<Payment> getAllPaymentsByPropertyId(Long propertyId, Pageable pageable) {
-        if (!propertyRepository.existsById(propertyId))
-            throw new ResourceNotFoundException("Property", "Id", propertyId);
-        return paymentRepository.findByPropertyId(propertyId, pageable);
+    public Page<Payment> getAllPaymentsByContractId(Long contractId, Pageable pageable) {
+        if (!contractRepository.existsById(contractId))
+            throw new ResourceNotFoundException("Contract", "Id", contractId);
+        return paymentRepository.findByContractId(contractId, pageable);
+
     }
 
-    @Override
-    public Page<Payment> getAllPaymentsByStudentId(Long studentId, Pageable pageable) {
-        if (!studentRepository.existsById(studentId))
-            throw new ResourceNotFoundException("Student", "Id", studentId);
-        return paymentRepository.findByStudentId(studentId, pageable);
-    }
+
 }

@@ -18,19 +18,19 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin
 @RequestMapping("/api")
-public class PropertyPaymentsController {
+public class ContractPaymentsController {
     @Autowired
     private ModelMapper mapper;
 
     @Autowired
     private PaymentService paymentService;
 
-    @Operation(summary = "Get Payments By Property Id",
-            description = "Get All Payments given a Property Id",
-            tags = "properties")
-    @GetMapping("/properties/{propertyId}/payments")
-    public Page<PaymentResource> getAllPaymentsByPropertyId(@PathVariable(name = "propertyId") Long propertyId, Pageable pageable) {
-        Page<Payment> paymentPage = paymentService.getAllPaymentsByPropertyId(propertyId, pageable);
+    @Operation(summary = "Get Payments By Contract Id",
+            description = "Get All Payments given a Contract Id",
+            tags = "contacts")
+    @GetMapping("/contracts/{contractId}/payments")
+    public Page<PaymentResource> getAllPaymentsByPropertyId(@PathVariable(name = "contractId") Long contractId, Pageable pageable) {
+        Page<Payment> paymentPage = paymentService.getAllPaymentsByContractId(contractId, pageable);
         List<PaymentResource> paymentResources = paymentPage.getContent()
                 .stream()
                 .map(this::convertToResource)

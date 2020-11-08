@@ -8,6 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
-    Page<Payment> findByPropertyId(Long propertyId, Pageable pageable);
-    Page<Payment> findByStudentId(Long studentId, Pageable pageable);
+    Page<Payment> findByContractId(Long contractId, Pageable pageable);
 }
