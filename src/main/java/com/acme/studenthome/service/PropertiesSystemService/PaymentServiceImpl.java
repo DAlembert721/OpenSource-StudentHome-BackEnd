@@ -22,12 +22,6 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentRepository paymentRepository;
 
     @Autowired
-    private PropertyRepository propertyRepository;
-
-    @Autowired
-    private StudentRepository studentRepository;
-
-    @Autowired
     private ContractRepository contractRepository;
 
     @Override
