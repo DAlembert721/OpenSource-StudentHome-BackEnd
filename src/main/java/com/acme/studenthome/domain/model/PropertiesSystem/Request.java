@@ -1,7 +1,7 @@
-package com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem;
+package com.acme.studenthome.domain.model.PropertiesSystem;
 
 import com.acme.studenthome.domain.model.AuditModel;
-import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
+import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,30 +12,28 @@ import javax.validation.constraints.Size;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "student_opinions")
+@Table(name = "requests")
 @Data
-public class StudentOpinion extends AuditModel{
+public class Request extends AuditModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    private Long score;
-
-    @NotNull
-    @Size(max = 250)
+    @Size(max = 500)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "land_lord_id", nullable = false)
-    @JsonIgnore
-    private LandLord landLord;
+    @NotNull
+    private Boolean state;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name = "student_id")
     @JsonIgnore
     private Student student;
 
-
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "property_id")
+    @JsonIgnore
+    private Property property;
 }

@@ -15,7 +15,7 @@ public class SavePaymentResource {
     private Float amount;
 
     @NotNull
-    @Size(max = 100)
+    @Size(max = 250)
     private String image;
 
     @NotNull
