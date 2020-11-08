@@ -21,10 +21,6 @@ public class Student extends Account {
     @Size(max = 100)
     private String address;
 
-    @NotNull
-    @Size(max = 100)
-    private String image;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "education_center_id", nullable = false)
     @JsonIgnore
@@ -41,14 +37,6 @@ public class Student extends Account {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public EducationCenter getEducationCenter() {

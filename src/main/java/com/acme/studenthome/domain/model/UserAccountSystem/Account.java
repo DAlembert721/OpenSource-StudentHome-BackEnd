@@ -29,21 +29,29 @@ public class Account extends AuditModel {
     @Size(max = 30)
     private String lastName;
 
+    @Size(max = 250)
+    private String image;
+
     @NotNull
     @Size(max = 15)
     @Column(unique = true)
     private String dni;
 
     @NotNull
-    private Long phone;
+    @Size(max = 20)
+    private String phone;
 
-    /*   @OneToOne(fetch = FetchType.LAZY)
-       @JoinColumn(name = "user_id")
-       private User user;*/
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @Size(max = 250)
+    private String description;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    /*@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
-    private User user;
+    private User user;*/
 
     public Long getId() {
         return id;
@@ -75,14 +83,6 @@ public class Account extends AuditModel {
 
     public void setDni(String dni) {
         this.dni = dni;
-    }
-
-    public Long getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Long phone) {
-        this.phone = phone;
     }
 
     public User getUser() {

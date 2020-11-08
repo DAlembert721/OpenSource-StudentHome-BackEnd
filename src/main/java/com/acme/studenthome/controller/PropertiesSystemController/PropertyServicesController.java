@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.PostConstruct;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
-public class PropertyServiceController {
+public class PropertyServicesController {
     @Autowired
     private ModelMapper mapper;
 

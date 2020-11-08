@@ -22,6 +22,13 @@ public class SaveAccountResource {
     private String dni;
 
     @NotNull
-    private Long phone;
+    @Size(max = 20)
+    private String phone;
+
+    @Size(max = 250)
+    private String description;
+
+    @Size(max = 250)
+    private String image;
 
 }

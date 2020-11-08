@@ -1,4 +1,4 @@
-package com.acme.studenthome.resource.LocationsSystem;
+package com.acme.studenthome.resource.LocationSystemResource;
 
 import lombok.Data;
 

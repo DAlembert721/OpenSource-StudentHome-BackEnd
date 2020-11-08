@@ -18,6 +18,7 @@ import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class UserLandLordsController {
 

@@ -1,0 +1,71 @@
+package com.acme.studenthome.service.PropertiesSystemService;
+
+import com.acme.studenthome.domain.model.PropertiesSystem.Contract;
+import com.acme.studenthome.domain.model.PropertiesSystem.Payment;
+import com.acme.studenthome.domain.model.PropertiesSystem.Property;
+import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
+import com.acme.studenthome.domain.repository.PropertiesSystemRepository.ContractRepository;
+import com.acme.studenthome.domain.repository.PropertiesSystemRepository.PaymentRepository;
+import com.acme.studenthome.domain.repository.PropertiesSystemRepository.PropertyRepository;
+import com.acme.studenthome.domain.repository.UserAccountSystemRepository.StudentSystemRepository.StudentRepository;
+import com.acme.studenthome.domain.service.PropertiesSystemService.PaymentService;
+import com.acme.studenthome.exception.ResourceNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PaymentServiceImpl implements PaymentService {
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    @Autowired
+    private ContractRepository contractRepository;
+
+    @Override
+    public Payment createPayment(Long contractId, Payment payment) {
+        Contract contract = contractRepository.findById(contractId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Contract", "Id", contractId));
+        payment.setContract(contract);
+        return paymentRepository.save(payment);
+    }
+
+    @Override
+    public Payment getPaymentById(Long paymentId) {
+        return paymentRepository.findById(paymentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Payment", "Id", paymentId));
+    }
+
+    @Override
+    public Payment updatePayment(Long paymentId, Payment resource) {
+        Payment payment = paymentRepository.findById(paymentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Payment", "Id", paymentId));
+        payment.setChecked(resource.getChecked());
+        payment.setImage(resource.getImage());
+        return paymentRepository.save(payment);
+    }
+
+    @Override
+    public ResponseEntity<?> deletePayment(Long paymentId) {
+        Payment payment = paymentRepository.findById(paymentId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Payment", "Id", paymentId));
+        paymentRepository.delete(payment);
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public Page<Payment> getAllPaymentsByContractId(Long contractId, Pageable pageable) {
+        if (!contractRepository.existsById(contractId))
+            throw new ResourceNotFoundException("Contract", "Id", contractId);
+        return paymentRepository.findByContractId(contractId, pageable);
+
+    }
+
+
+}

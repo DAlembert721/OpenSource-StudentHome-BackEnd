@@ -40,13 +40,13 @@ public class UserLandLordsControllerTest {
         landLordToPost.setLastName("tataje");
         landLordToPost.setDni("73889623");
         landLordToPost.setSubscription(subscriptionRepository.findById((long) 1).orElse(null));
-        landLordToPost.setPhone((long) 995995408);
+        landLordToPost.setPhone("995995408");
         LandLord landLordToReturn = new LandLord();
         landLordToPost.setId((long) 1);
         landLordToPost.setFirstName("mario");
         landLordToPost.setLastName("tataje");
         landLordToPost.setDni("73889623");
-        landLordToPost.setPhone((long) 995995408);
+        landLordToPost.setPhone("995995408");
         Gson gson = new Gson();
         doReturn(landLordToReturn).when(landLordService).createLandLord((long) 1, (long) 1, any());
 

@@ -18,6 +18,7 @@ import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class UserStudentsController {
 
@@ -100,6 +101,7 @@ public class UserStudentsController {
             protected void configure() {
                 map().setDistrictName(source.getDistrict().getName());
                 map().setEducationCenterName(source.getEducationCenter().getName());
+                map().setEmail(source.getUser().getEmail());
             }
         });
     }
