@@ -116,4 +116,9 @@ public class PropertyServiceImpl implements PropertyService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Service", "Id", serviceId));
     }
+
+    @Override
+    public Page<Property> getAllPropertiesByLandLordId(Long landLordId, Pageable pageable) {
+        return propertyRepository.findByLandLordId(landLordId, pageable);
+    }
 }

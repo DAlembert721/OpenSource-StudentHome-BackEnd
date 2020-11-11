@@ -15,4 +15,5 @@ public interface PropertyService {
     Property assignPropertyService(Long propertyId, Long serviceId);
     Property unAssignPropertyService(Long propertyId, Long serviceId);
     Page<Property> getAllPropertiesByServiceId(Long serviceId, Pageable pageable);
+    Page<Property> getAllPropertiesByLandLordId(Long landLordId, Pageable pageable);
 }
