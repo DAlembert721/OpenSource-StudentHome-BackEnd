@@ -36,7 +36,7 @@ public class LandLordPropertiesController {
                     description = "Property created",
                     content = @Content(mediaType = "application/json"))
     })
-    @PostMapping("landlords/{landLordId}/properties")
+    @PostMapping("/landlords/{landLordId}/properties")
     public PropertyResource createProperty(
             @PathVariable(name = "landLordId") Long landLordId,
             @Valid @RequestBody SavePropertyResource resource) {
