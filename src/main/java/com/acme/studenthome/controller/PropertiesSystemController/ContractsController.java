@@ -1,15 +1,19 @@
 package com.acme.studenthome.controller.PropertiesSystemController;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Contract;
+import com.acme.studenthome.domain.model.PropertiesSystem.Request;
 import com.acme.studenthome.domain.service.PropertiesSystemService.ContractService;
 import com.acme.studenthome.resource.PropertiesSystemResource.ContractResource;
+import com.acme.studenthome.resource.PropertiesSystemResource.RequestResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SaveContractResource;
 import io.swagger.v3.oas.annotations.Operation;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 @RestController
@@ -55,5 +59,18 @@ public class ContractsController {
 
     private ContractResource convertToResource(Contract entity) {
         return mapper.map(entity, ContractResource.class);
+    }
+
+    @PostConstruct
+    public void init() {
+        mapper.addMappings(new PropertyMap<Contract, ContractResource>() {
+            @Override
+            protected void configure() {
+                map().setFirstNameStudent(source.getStudent().getFirstName());
+                map().setLastNameStudent(source.getStudent().getLastName());
+                map().setFirstNameLandlord(source.getProperty().getLandLord().getFirstName());
+                map().setLastNameStudent(source.getProperty().getLandLord().getLastName());
+            }
+        });
     }
 }
