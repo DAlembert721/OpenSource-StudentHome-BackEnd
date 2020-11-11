@@ -1,16 +1,20 @@
 package com.acme.studenthome.controller.PropertiesSystemController;
 
+import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.PropertiesSystem.Request;
 import com.acme.studenthome.domain.service.PropertiesSystemService.RequestService;
+import com.acme.studenthome.resource.PropertiesSystemResource.PropertyResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.RequestResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SaveRequestResource;
 import io.swagger.v3.oas.annotations.Operation;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 
 @RestController
@@ -47,13 +51,22 @@ public class RequestsController {
         return requestService.deleteRequest(requestId);
     }
 
-
-
     private Request convertToEntity(SaveRequestResource resource) {
         return mapper.map(resource, Request.class);
     }
 
     private RequestResource convertToResource(Request entity) {
         return mapper.map(entity, RequestResource.class);
+    }
+
+    @PostConstruct
+    public void init() {
+        mapper.addMappings(new PropertyMap<Request, RequestResource>() {
+            @Override
+            protected void configure() {
+                map().setFirstNameStudent(source.getStudent().getFirstName());
+                map().setLastNameStudent(source.getStudent().getLastName());
+            }
+        });
     }
 }
