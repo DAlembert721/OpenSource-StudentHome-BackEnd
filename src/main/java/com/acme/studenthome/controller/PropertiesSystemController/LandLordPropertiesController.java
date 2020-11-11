@@ -12,10 +12,15 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -43,6 +48,21 @@ public class LandLordPropertiesController {
         Property property = convertToEntity(resource);
         return convertToResource(propertyService.createProperty(landLordId,resource.getPlace(), property));
 
+    }
+    @Operation(summary = "Get Properties By Landlord Id",
+            description = "Get All Properties given a Landlord Id",
+            tags = "landlords")
+    @GetMapping("/landlords/{landLordId}/properties")
+    public Page<PropertyResource> getAllPropertiesByLandLordId(
+            @PathVariable(name = "landLordId") Long landLordId,
+            Pageable pageable
+    ) {
+        Page<Property> properties = propertyService.getAllPropertiesByLandLordId(landLordId, pageable);
+        List<PropertyResource> resources = properties.getContent()
+                .stream()
+                .map(this::convertToResource)
+                .collect(Collectors.toList());
+        return new PageImpl<>(resources, pageable, resources.size());
     }
 
     private Property convertToEntity(SavePropertyResource resource) {
