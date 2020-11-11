@@ -67,7 +67,7 @@ public class RequestsController {
                 map().setFirstNameStudent(source.getStudent().getFirstName());
                 map().setLastNameStudent(source.getStudent().getLastName());
                 map().setFirstNameLandlord(source.getProperty().getLandLord().getFirstName());
-                map().setLastNameStudent(source.getProperty().getLandLord().getLastName());
+                map().setLastNameLandlord(source.getProperty().getLandLord().getLastName());
             }
         });
     }
