@@ -66,6 +66,8 @@ public class RequestsController {
             protected void configure() {
                 map().setFirstNameStudent(source.getStudent().getFirstName());
                 map().setLastNameStudent(source.getStudent().getLastName());
+                map().setFirstNameLandlord(source.getProperty().getLandLord().getFirstName());
+                map().setLastNameStudent(source.getProperty().getLandLord().getLastName());
             }
         });
     }
