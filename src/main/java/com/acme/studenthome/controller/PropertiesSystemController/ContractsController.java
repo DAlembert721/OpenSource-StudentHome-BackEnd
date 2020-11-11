@@ -2,6 +2,7 @@ package com.acme.studenthome.controller.PropertiesSystemController;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Contract;
 import com.acme.studenthome.domain.model.PropertiesSystem.Request;
+import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
 import com.acme.studenthome.domain.service.PropertiesSystemService.ContractService;
 import com.acme.studenthome.resource.PropertiesSystemResource.ContractResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.RequestResource;
@@ -68,8 +69,9 @@ public class ContractsController {
             protected void configure() {
                 map().setFirstNameStudent(source.getStudent().getFirstName());
                 map().setLastNameStudent(source.getStudent().getLastName());
-                map().setFirstNameLandlord(source.getProperty().getLandLord().getFirstName());
-                map().setLastNameStudent(source.getProperty().getLandLord().getLastName());
+                LandLord landLord = source.getProperty().getLandLord();
+                map().setFirstNameLandlord(landLord.getFirstName());
+                map().setLastNameLandlord(landLord.getLastName());
             }
         });
     }
