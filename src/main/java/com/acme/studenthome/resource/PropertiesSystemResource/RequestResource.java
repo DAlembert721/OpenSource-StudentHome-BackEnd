@@ -8,4 +8,6 @@ public class RequestResource {
     private Long id;
     private String content;
     private Boolean state;
+    private String firstNameStudent;
+    private String lastNameStudent;
 }
