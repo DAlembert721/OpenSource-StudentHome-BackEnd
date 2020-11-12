@@ -31,7 +31,7 @@ public class PropertiesController {
     @Autowired
     private PropertyService propertyService;
 
-    @Operation(summary = "Get Properties",
+    @Operation(summary = "Get All Properties",
             description = "Get All Properties by Page",
             tags = "properties")
     @ApiResponses(value = {
@@ -47,6 +47,14 @@ public class PropertiesController {
                 .map(this::convertToResource)
                 .collect(Collectors.toList());
         return new PageImpl<>(resources, pageable, resources.size());
+    }
+
+    @Operation(summary = "Get Property By Id",
+            description = "Get A Property given a Id",
+            tags = "properties")
+    @GetMapping("/properties/{propertyId}")
+    public PropertyResource getPropertyById(@PathVariable(name = "propertyId") Long propertyId) {
+        return convertToResource(propertyService.getPropertyById(propertyId));
     }
 
     @Operation(summary = "Get Properties By Service Id",
