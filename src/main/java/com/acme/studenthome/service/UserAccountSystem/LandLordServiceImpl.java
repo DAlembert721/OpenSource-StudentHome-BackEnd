@@ -43,6 +43,7 @@ public class LandLordServiceImpl implements LandLordService {
                         new ResourceNotFoundException("Subscription", "Id", subscriptionId));
         landLord.setUser(user);
         landLord.setSubscription(subscription);
+        landLord.setId(user.getId());
         return landLordRepository.save(landLord);
     }
 

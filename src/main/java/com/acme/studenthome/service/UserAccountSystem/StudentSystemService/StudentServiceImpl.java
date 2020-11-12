@@ -53,6 +53,7 @@ public class StudentServiceImpl implements StudentService {
         student.setUser(user);
         student.setEducationCenter(educationCenter);
         student.setDistrict(district);
+        student.setId(user.getId());
 
         return studentRepository.save(student);
     }
