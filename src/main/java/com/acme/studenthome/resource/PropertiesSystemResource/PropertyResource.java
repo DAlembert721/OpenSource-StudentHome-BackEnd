@@ -6,6 +6,7 @@ import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
@@ -22,6 +23,10 @@ public class PropertyResource {
     private Boolean active;
 
     private String address;
+
+    private String title;
+
+    private String description;
 
     private Long landLordId;
 

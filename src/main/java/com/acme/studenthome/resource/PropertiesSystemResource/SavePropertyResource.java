@@ -23,5 +23,11 @@ public class SavePropertyResource {
     @Size(max = 100)
     private String address;
 
+    @Size(max = 100)
+    private String title;
+
+    @Size(max = 400)
+    private String description;
+
     private Long place;
 }

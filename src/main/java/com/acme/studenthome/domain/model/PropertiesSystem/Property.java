@@ -38,6 +38,12 @@ public class Property extends AuditModel {
     @Size(max = 100)
     private String address;
 
+    @Size(max = 100)
+    private String title;
+
+    @Size(max = 400)
+    private String description;
+
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "property_services",
