@@ -10,7 +10,7 @@ public interface PropertyService {
     Page<Property> getAllProperties(Pageable pageable);
     Property createProperty(Long landLordId, Long districtId, Property property);
     Property getPropertyById(Long propertyId);
-    Property updateProperty(Long landLordId, Long propertyId, Property propertyRequest);
+    Property updateProperty(Long landLordId, Long propertyId, Long districtId, Property propertyRequest);
     ResponseEntity<?> deleteProperty(Long landLordId, Long propertyId);
     Property assignPropertyService(Long propertyId, Long serviceId);
     Property unAssignPropertyService(Long propertyId, Long serviceId);

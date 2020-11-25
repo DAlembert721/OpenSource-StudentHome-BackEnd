@@ -59,9 +59,12 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public Property updateProperty(Long landLordId, Long propertyId, Property propertyRequest) {
+    public Property updateProperty(Long landLordId, Long propertyId, Long districtId, Property propertyRequest) {
         if (!landLordRepository.existsById(landLordId))
             throw new ResourceNotFoundException("LandLord", "Id", landLordId);
+        District district = districtRepository.findById(districtId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("District", "Id", districtId));
         Property property = propertyRepository.findById(propertyId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Property", "Id", propertyId));
@@ -70,7 +73,7 @@ public class PropertyServiceImpl implements PropertyService {
         property.setRooms(propertyRequest.getRooms());
         property.setSize(propertyRequest.getSize());
         property.setAddress(propertyRequest.getAddress());
-        property.setDistrict(propertyRequest.getDistrict());
+        property.setDistrict(district);
         return propertyRepository.save(property);
     }
 

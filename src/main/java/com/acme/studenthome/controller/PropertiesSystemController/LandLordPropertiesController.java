@@ -73,12 +73,13 @@ public class LandLordPropertiesController {
                     description = "Property updated",
                     content = @Content(mediaType = "application/json"))
     })
-    @PutMapping("/landlords/{landLordId}/properties")
+    @PutMapping("/landlords/{landLordId}/properties/{propertyId}")
     public PropertyResource updateProperty(
             @PathVariable(name = "landLordId") Long landLordId,
+            @PathVariable(name = "propertyId") Long propertyId,
             @Valid @RequestBody SavePropertyResource resource) {
         Property property = convertToEntity(resource);
-        return convertToResource(propertyService.updateProperty(landLordId,resource.getPlace(), property));
+        return convertToResource(propertyService.updateProperty(landLordId, propertyId, resource.getPlace(), property));
 
     }
 
