@@ -121,4 +121,9 @@ public class PropertyServiceImpl implements PropertyService {
     public Page<Property> getAllPropertiesByLandLordId(Long landLordId, Pageable pageable) {
         return propertyRepository.findByLandLordId(landLordId, pageable);
     }
+
+    @Override
+    public Page<Property> getAllActiveProperties(Boolean active, Pageable pageable) {
+        return propertyRepository.findByActive(active, pageable);
+    }
 }

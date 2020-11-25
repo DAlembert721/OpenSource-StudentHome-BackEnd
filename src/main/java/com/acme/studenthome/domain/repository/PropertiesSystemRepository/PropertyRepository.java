@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface PropertyRepository extends JpaRepository<Property, Long> {
     Page<Property> findByLandLordId(Long landLordId, Pageable pageable);
+    Page<Property> findByActive(Boolean active, Pageable pageable);
 }

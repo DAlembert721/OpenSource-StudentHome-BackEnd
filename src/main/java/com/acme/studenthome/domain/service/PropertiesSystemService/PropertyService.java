@@ -16,4 +16,5 @@ public interface PropertyService {
     Property unAssignPropertyService(Long propertyId, Long serviceId);
     Page<Property> getAllPropertiesByServiceId(Long serviceId, Pageable pageable);
     Page<Property> getAllPropertiesByLandLordId(Long landLordId, Pageable pageable);
+    Page<Property> getAllActiveProperties(Boolean active, Pageable pageable);
 }

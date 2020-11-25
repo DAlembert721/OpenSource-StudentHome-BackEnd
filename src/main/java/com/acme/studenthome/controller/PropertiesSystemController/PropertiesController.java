@@ -49,6 +49,24 @@ public class PropertiesController {
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
+    @Operation(summary = "Get All Active Properties",
+            description = "Get All Active Properties by Page",
+            tags = "properties")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "All active properties returned",
+                    content = @Content(mediaType = "application/json"))
+    })
+    @GetMapping("/properties/active={active}")
+    public Page<PropertyResource> getAllActiveProperties(@PathVariable(name = "active")Boolean active, Pageable pageable) {
+        Page<Property> propertyPage = propertyService.getAllActiveProperties(active, pageable);
+        List<PropertyResource> resources = propertyPage.getContent()
+                .stream()
+                .map(this::convertToResource)
+                .collect(Collectors.toList());
+        return new PageImpl<>(resources, pageable, resources.size());
+    }
+
     @Operation(summary = "Get Property By Id",
             description = "Get A Property given a Id",
             tags = "properties")
@@ -69,6 +87,8 @@ public class PropertiesController {
                 .collect(Collectors.toList());
         return new PageImpl<>(resources, pageable, resources.size());
     }
+
+
 
     private Property convertToEntity(SavePropertyResource resource) {
         return mapper.map(resource, Property.class);
