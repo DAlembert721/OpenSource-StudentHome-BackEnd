@@ -68,6 +68,8 @@ public class PropertyServiceImpl implements PropertyService {
         Property property = propertyRepository.findById(propertyId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Property", "Id", propertyId));
+        property.setTitle(propertyRequest.getTitle());
+        property.setDescription(propertyRequest.getDescription());
         property.setActive(propertyRequest.getActive());
         property.setCost(propertyRequest.getCost());
         property.setRooms(propertyRequest.getRooms());
