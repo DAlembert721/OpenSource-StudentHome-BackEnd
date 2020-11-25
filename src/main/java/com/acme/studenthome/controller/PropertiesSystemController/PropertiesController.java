@@ -87,6 +87,9 @@ public class PropertiesController {
                 map().setLandLordId(source.getLandLord().getId());
                 map().setLandLordFirstName(source.getLandLord().getFirstName());
                 map().setLandLordLastName(source.getLandLord().getLastName());
+                map().setDistrictId(source.getDistrict().getId());
+                map().setProvinceId(source.getDistrict().getProvince().getId());
+                map().setRegionId(source.getDistrict().getProvince().getRegion().getId());
 
             }
         });

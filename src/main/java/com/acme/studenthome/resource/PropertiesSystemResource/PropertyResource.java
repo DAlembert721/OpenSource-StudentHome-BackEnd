@@ -34,6 +34,12 @@ public class PropertyResource {
 
     private String landLordLastName;
 
+    private Long districtId;
+
+    private Long provinceId;
+
+    private Long regionId;
+
     public Long getId() {
         return id;
     }
