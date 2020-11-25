@@ -62,6 +62,9 @@ public class Property extends AuditModel {
     @JsonIgnore
     private LandLord landLord;
 
+    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL)
+    private List<PropertyImage> propertyImages;
+
     public Long getId() {
         return id;
     }
