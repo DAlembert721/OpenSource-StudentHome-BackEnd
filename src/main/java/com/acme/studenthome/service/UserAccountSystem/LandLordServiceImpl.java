@@ -44,6 +44,7 @@ public class LandLordServiceImpl implements LandLordService {
         landLord.setUser(user);
         landLord.setSubscription(subscription);
         landLord.setId(user.getId());
+        landLord.setType("landlord");
         return landLordRepository.save(landLord);
     }
 
