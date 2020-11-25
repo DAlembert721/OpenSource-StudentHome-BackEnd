@@ -69,9 +69,8 @@ public class ContractsController {
             protected void configure() {
                 map().setFirstNameStudent(source.getStudent().getFirstName());
                 map().setLastNameStudent(source.getStudent().getLastName());
-                LandLord landLord = source.getProperty().getLandLord();
-                map().setFirstNameLandlord(landLord.getFirstName());
-                map().setLastNameLandlord(landLord.getLastName());
+                map().setPropertyId(source.getProperty().getId());
+                map().setStudentId(source.getStudent().getId());
             }
         });
     }
