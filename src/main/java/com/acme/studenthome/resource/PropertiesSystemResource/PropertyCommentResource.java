@@ -13,4 +13,6 @@ public class PropertyCommentResource {
     private Date createdAt;
     private String studentFirstName;
     private String studentLastName;
+    private String studentImage;
+    private Long studentId;
 }
