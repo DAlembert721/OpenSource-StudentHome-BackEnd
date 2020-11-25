@@ -43,6 +43,10 @@ public class Account extends AuditModel {
     @Size(max = 250)
     private String description;
 
+    @NotNull
+    @Size(max = 10)
+    private String type;
+
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
