@@ -1,12 +1,15 @@
 package com.acme.studenthome.controller.PropertiesSystemController;
 
+import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.PropertiesSystem.PropertyComment;
 import com.acme.studenthome.domain.service.PropertiesSystemService.PropertyCommentService;
 import com.acme.studenthome.resource.PropertiesSystemResource.PropertyCommentResource;
+import com.acme.studenthome.resource.PropertiesSystemResource.PropertyResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SavePropertyCommentResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SavePropertyResource;
 import io.swagger.v3.oas.annotations.Operation;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -15,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -83,5 +87,19 @@ public class PropertyCommentsController {
 
     private PropertyCommentResource convertToResource(PropertyComment entity) {
         return mapper.map(entity, PropertyCommentResource.class);
+    }
+
+    @PostConstruct
+    public void init() {
+        mapper.addMappings(new PropertyMap<PropertyComment, PropertyCommentResource>() {
+            @Override
+            protected void configure() {
+                map().setStudentFirstName(source.getStudent().getFirstName());
+                map().setStudentLastName(source.getStudent().getLastName());
+                map().setStudentImage(source.getStudent().getImage());
+                map().setStudentId(source.getStudent().getId());
+                
+            }
+        });
     }
 }
