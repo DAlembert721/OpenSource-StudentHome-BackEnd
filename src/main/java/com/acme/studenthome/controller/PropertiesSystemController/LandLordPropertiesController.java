@@ -65,6 +65,23 @@ public class LandLordPropertiesController {
         return new PageImpl<>(resources, pageable, resources.size());
     }
 
+    @Operation(summary = "Update Property of a Land Lord",
+            description = "Update A Property of a Land Lord",
+            tags = "landlords")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",
+                    description = "Property updated",
+                    content = @Content(mediaType = "application/json"))
+    })
+    @PutMapping("/landlords/{landLordId}/properties")
+    public PropertyResource updateProperty(
+            @PathVariable(name = "landLordId") Long landLordId,
+            @Valid @RequestBody SavePropertyResource resource) {
+        Property property = convertToEntity(resource);
+        return convertToResource(propertyService.updateProperty(landLordId,resource.getPlace(), property));
+
+    }
+
     private Property convertToEntity(SavePropertyResource resource) {
         return mapper.map(resource, Property.class);
     }
