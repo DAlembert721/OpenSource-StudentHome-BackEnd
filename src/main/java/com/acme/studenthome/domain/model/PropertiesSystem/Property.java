@@ -47,8 +47,8 @@ public class Property extends AuditModel {
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "property_services",
-            joinColumns = { @JoinColumn(name = "service_id")},
-            inverseJoinColumns = { @JoinColumn(name = "property_id")})
+            joinColumns = { @JoinColumn(name = "property_id")},
+            inverseJoinColumns = { @JoinColumn(name = "service_id")})
     private List<Service> services;
 
 
