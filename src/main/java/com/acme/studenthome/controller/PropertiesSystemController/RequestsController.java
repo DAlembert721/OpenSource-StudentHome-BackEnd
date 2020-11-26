@@ -2,6 +2,7 @@ package com.acme.studenthome.controller.PropertiesSystemController;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.PropertiesSystem.Request;
+import com.acme.studenthome.domain.model.PropertiesSystem.RequestStatus;
 import com.acme.studenthome.domain.service.PropertiesSystemService.RequestService;
 import com.acme.studenthome.resource.PropertiesSystemResource.PropertyResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.RequestResource;
@@ -49,6 +50,13 @@ public class RequestsController {
     @DeleteMapping("/requests/{requestId}")
     public ResponseEntity<?> deleteRequest(@PathVariable(name = "requestId") Long requestId){
         return requestService.deleteRequest(requestId);
+    }
+
+    @Operation(summary = "Update Request State", description = "Update a Request State", tags = {"requests"})
+    @PutMapping("/requests/{requestId}/state={state}")
+    public RequestResource updateRequest(@PathVariable(name = "requestId") Long requestId,
+                                         @PathVariable(name = "state") RequestStatus state){
+        return convertToResource(requestService.updateStateOfRequest(requestId, state));
     }
 
     private Request convertToEntity(SaveRequestResource resource) {

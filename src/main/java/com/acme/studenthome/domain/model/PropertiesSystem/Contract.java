@@ -27,7 +27,7 @@ public class Contract extends AuditModel {
     private Float amount;
 
     @NotNull
-    private Boolean state;
+    private ContractStatus state;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id")

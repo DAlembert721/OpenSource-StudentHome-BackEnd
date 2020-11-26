@@ -1,6 +1,8 @@
 package com.acme.studenthome.domain.service.PropertiesSystemService;
 
+
 import com.acme.studenthome.domain.model.PropertiesSystem.Request;
+import com.acme.studenthome.domain.model.PropertiesSystem.RequestStatus;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -11,4 +13,5 @@ public interface RequestService {
     Page<Request> getAllRequestsByStudentIdId(Long studentId, Pageable pageable);
     Request updateRequest(Long requestId, Request resource);
     ResponseEntity<?> deleteRequest(Long requestId);
+    Request updateStateOfRequest(Long requestId, RequestStatus state);
 }

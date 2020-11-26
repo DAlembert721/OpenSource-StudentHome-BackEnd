@@ -2,6 +2,7 @@ package com.acme.studenthome.service.PropertiesSystemService;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.PropertiesSystem.Request;
+import com.acme.studenthome.domain.model.PropertiesSystem.RequestStatus;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
 import com.acme.studenthome.domain.repository.PropertiesSystemRepository.PropertyRepository;
 import com.acme.studenthome.domain.repository.PropertiesSystemRepository.RequestRepository;
@@ -68,5 +69,14 @@ public class RequestServiceImpl implements RequestService {
                         new ResourceNotFoundException("Request", "Id", requestId));
         requestRepository.delete(request);
         return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public Request updateStateOfRequest(Long requestId, RequestStatus state) {
+        Request request = requestRepository.findById(requestId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Request", "Id", requestId));
+        request.setState(state);
+        return requestRepository.save(request);
     }
 }

@@ -25,7 +25,7 @@ public class Request extends AuditModel {
     private String content;
 
     @NotNull
-    private Boolean state;
+    private RequestStatus state;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id")
