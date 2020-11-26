@@ -12,6 +12,4 @@ public class SaveRequestResource {
     @Size(max = 500)
     private String content;
 
-    @NotNull
-    private Boolean state;
 }

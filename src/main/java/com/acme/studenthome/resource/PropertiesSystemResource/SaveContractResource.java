@@ -15,6 +15,4 @@ public class SaveContractResource {
     @NotNull
     private Float amount;
 
-    @NotNull
-    private Boolean state;
 }
