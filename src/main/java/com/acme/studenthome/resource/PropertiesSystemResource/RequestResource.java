@@ -1,5 +1,6 @@
 package com.acme.studenthome.resource.PropertiesSystemResource;
 
+import com.acme.studenthome.domain.model.PropertiesSystem.RequestStatus;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,7 +10,7 @@ import java.util.Date;
 public class RequestResource {
     private Long id;
     private String content;
-    private Boolean state;
+    private RequestStatus state;
     private String firstNameStudent;
     private String lastNameStudent;
     private Date createdAt;

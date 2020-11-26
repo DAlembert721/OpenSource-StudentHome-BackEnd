@@ -1,11 +1,9 @@
 package com.acme.studenthome.controller.PropertiesSystemController;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Contract;
-import com.acme.studenthome.domain.model.PropertiesSystem.Request;
-import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
+import com.acme.studenthome.domain.model.PropertiesSystem.ContractStatus;
 import com.acme.studenthome.domain.service.PropertiesSystemService.ContractService;
 import com.acme.studenthome.resource.PropertiesSystemResource.ContractResource;
-import com.acme.studenthome.resource.PropertiesSystemResource.RequestResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SaveContractResource;
 import io.swagger.v3.oas.annotations.Operation;
 import org.modelmapper.ModelMapper;
@@ -50,6 +48,15 @@ public class ContractsController {
     @DeleteMapping("/contracts/{contractId}")
     public ResponseEntity<?> deleteContract(@PathVariable(name = "contractId") Long contractId){
         return contractService.deleteContract(contractId);
+    }
+
+    @Operation(summary = "Update Contract State",
+            description = "Update the State Of A Contract",
+            tags = {"contracts"})
+    @PutMapping("/contracts/{contractId}/state={state}")
+    public ContractResource updateContract(@PathVariable(name = "contractId") Long contractId,
+                                         @PathVariable(name = "state") ContractStatus state){
+        return convertToResource(contractService.updateStateOfContract(contractId, state));
     }
 
 
