@@ -110,6 +110,9 @@ public class PropertiesController {
                 map().setDistrictId(source.getDistrict().getId());
                 map().setProvinceId(source.getDistrict().getProvince().getId());
                 map().setRegionId(source.getDistrict().getProvince().getRegion().getId());
+                map().setDistrictName(source.getDistrict().getName());
+                map().setProvinceName(source.getDistrict().getProvince().getName());
+                map().setRegionName(source.getDistrict().getProvince().getRegion().getName());
 
             }
         });
