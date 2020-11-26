@@ -34,6 +34,7 @@ public class RequestServiceImpl implements RequestService {
                         new ResourceNotFoundException("Property", "Id", propertyId));
         request.setStudent(student);
         request.setProperty(property);
+        request.setState(RequestStatus.UNRESOLVED);
         return  requestRepository.save(request);
     }
 

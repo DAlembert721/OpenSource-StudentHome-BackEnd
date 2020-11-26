@@ -34,6 +34,7 @@ public class ContractServiceImpl implements ContractService {
                         new ResourceNotFoundException("Property", "Id", propertyId));
         contract.setStudent(student);
         contract.setProperty(property);
+        contract.setState(ContractStatus.UNRESOLVED);
         return  contractRepository.save(contract);
     }
 
