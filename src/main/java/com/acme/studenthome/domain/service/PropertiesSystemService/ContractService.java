@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface ContractService {
     Contract createContract(Long studentId, Long propertyId, Contract contract);
+    Contract getContractById(Long contractId);
     Page<Contract> getAllContractsByPropertyId(Long propertyId, Pageable pageable);
     Page<Contract> getAllContractsByStudentId(Long studentId, Pageable pageable);
     Contract updateContract(Long contractId, Contract resource);
