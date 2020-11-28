@@ -46,7 +46,8 @@ public class PaymentServiceImpl implements PaymentService {
         Payment payment = paymentRepository.findById(paymentId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Payment", "Id", paymentId));
-        payment.setChecked(resource.getChecked());
+        payment.setChecked(payment.getChecked());
+        payment.setComment(resource.getComment());
         payment.setImage(resource.getImage());
         return paymentRepository.save(payment);
     }
