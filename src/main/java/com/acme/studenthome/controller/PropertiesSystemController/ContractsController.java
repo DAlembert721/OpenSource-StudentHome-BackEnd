@@ -59,6 +59,12 @@ public class ContractsController {
         return convertToResource(contractService.updateStateOfContract(contractId, state));
     }
 
+    @Operation(summary = "Get Contract By Contract Id",
+            description = "Get a contract by id", tags = {"contracts"})
+    @GetMapping("/contracts/{contractId}")
+    public ContractResource getContractById(@PathVariable(name = "contractId") Long contractId){
+        return convertToResource(contractService.getContractById(contractId));
+    }
 
 
     private Contract convertToEntity(SaveContractResource resource) {
