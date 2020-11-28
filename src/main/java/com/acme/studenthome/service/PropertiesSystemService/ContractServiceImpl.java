@@ -39,6 +39,13 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    public Contract getContractById(Long contractId) {
+        return contractRepository.findById(contractId)
+                .orElseThrow(()->
+                        new ResourceNotFoundException("Contract", "Id", contractId));
+    }
+
+    @Override
     public Page<Contract> getAllContractsByPropertyId(Long propertyId, Pageable pageable) {
         if(!propertyRepository.existsById(propertyId))
             throw new ResourceNotFoundException("Property", "Id", propertyId);

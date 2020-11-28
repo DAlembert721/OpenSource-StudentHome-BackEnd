@@ -1,18 +1,21 @@
 package com.acme.studenthome.domain.model.PropertiesSystem;
 
+import com.acme.studenthome.domain.model.AuditModel;
 import com.acme.studenthome.domain.model.LocationsSystem.District;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "payments")
 @Data
-public class Payment {
+public class Payment extends AuditModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,14 @@ public class Payment {
     @NotNull
     @Size(max = 250)
     private String image;
+
+    @NotNull
+    private Float pay;
+
+
+    @Size(max = 250)
+    private String comment;
+
 
     @NotNull
     private Boolean checked;
