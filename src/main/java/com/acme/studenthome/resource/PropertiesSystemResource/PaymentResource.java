@@ -20,5 +20,5 @@ public class PaymentResource {
 
     private Date createdAt;
 
-    private Date updateAt;
+    private Date updatedAt;
 }
