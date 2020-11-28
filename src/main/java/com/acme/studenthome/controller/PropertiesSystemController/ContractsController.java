@@ -1,7 +1,7 @@
 package com.acme.studenthome.controller.PropertiesSystemController;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Contract;
-import com.acme.studenthome.domain.model.PropertiesSystem.ContractStatus;
+import com.acme.studenthome.domain.model.PropertiesSystem.EContractStatus;
 import com.acme.studenthome.domain.service.PropertiesSystemService.ContractService;
 import com.acme.studenthome.resource.PropertiesSystemResource.ContractResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SaveContractResource;
@@ -55,7 +55,7 @@ public class ContractsController {
             tags = {"contracts"})
     @PutMapping("/contracts/{contractId}/state={state}")
     public ContractResource updateContract(@PathVariable(name = "contractId") Long contractId,
-                                         @PathVariable(name = "state") ContractStatus state){
+                                         @PathVariable(name = "state") EContractStatus state){
         return convertToResource(contractService.updateStateOfContract(contractId, state));
     }
 

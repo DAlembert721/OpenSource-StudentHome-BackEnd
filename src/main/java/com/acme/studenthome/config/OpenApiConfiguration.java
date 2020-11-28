@@ -1,4 +1,4 @@
-package com.acme.studenthome.configuration;
+package com.acme.studenthome.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

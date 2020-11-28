@@ -1,10 +1,8 @@
 package com.acme.studenthome.controller.PropertiesSystemController;
 
-import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.PropertiesSystem.Request;
-import com.acme.studenthome.domain.model.PropertiesSystem.RequestStatus;
+import com.acme.studenthome.domain.model.PropertiesSystem.ERequestStatus;
 import com.acme.studenthome.domain.service.PropertiesSystemService.RequestService;
-import com.acme.studenthome.resource.PropertiesSystemResource.PropertyResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.RequestResource;
 import com.acme.studenthome.resource.PropertiesSystemResource.SaveRequestResource;
 import io.swagger.v3.oas.annotations.Operation;
@@ -55,7 +53,7 @@ public class RequestsController {
     @Operation(summary = "Update Request State", description = "Update a Request State", tags = {"requests"})
     @PutMapping("/requests/{requestId}/state={state}")
     public RequestResource updateRequest(@PathVariable(name = "requestId") Long requestId,
-                                         @PathVariable(name = "state") RequestStatus state){
+                                         @PathVariable(name = "state") ERequestStatus state){
         return convertToResource(requestService.updateStateOfRequest(requestId, state));
     }
 

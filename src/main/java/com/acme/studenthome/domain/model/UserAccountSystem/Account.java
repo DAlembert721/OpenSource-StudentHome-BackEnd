@@ -1,7 +1,7 @@
 package com.acme.studenthome.domain.model.UserAccountSystem;
 
 import com.acme.studenthome.domain.model.AuditModel;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.acme.studenthome.domain.model.UserAccountSystem.Auth.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

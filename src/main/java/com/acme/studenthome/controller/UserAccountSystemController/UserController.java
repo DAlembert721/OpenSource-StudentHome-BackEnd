@@ -1,7 +1,7 @@
 package com.acme.studenthome.controller.UserAccountSystemController;
 
-import com.acme.studenthome.domain.model.UserAccountSystem.User;
-import com.acme.studenthome.domain.service.UserAccountSystemService.UserService;
+import com.acme.studenthome.domain.model.UserAccountSystem.Auth.User;
+import com.acme.studenthome.domain.service.UserAccountSystemService.Auth.UserService;
 import com.acme.studenthome.resource.UserAccountSystemResource.SaveUserResource;
 import com.acme.studenthome.resource.UserAccountSystemResource.UserResource;
 import io.swagger.v3.oas.annotations.Operation;
@@ -46,11 +46,6 @@ public class UserController {
                     description = "User created",
                     content = @Content(mediaType = "application/json"))
     })
-    @PostMapping("/users")
-    public  UserResource createUser(@Valid @RequestBody SaveUserResource resource) {
-        User user = convertToEntity(resource);
-        return convertToResource(userService.createUser(user));
-    }
 
 
     private User convertToEntity(SaveUserResource resource) {

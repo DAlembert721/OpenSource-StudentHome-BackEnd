@@ -11,7 +11,7 @@ public class SaveUserResource {
     @NotNull
     @Size(max = 50)
     @Column(unique = true)
-    private String email;
+    private String username;
 
     @NotNull
     @Size(max = 50)
