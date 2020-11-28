@@ -12,4 +12,5 @@ public class AccountResource {
     private Long phone;
     private String email;
     private String description;
+    private String type;
 }
