@@ -1,7 +1,7 @@
 package com.acme.studenthome;
 
-import com.acme.studenthome.domain.model.UserAccountSystem.User;
-import com.acme.studenthome.domain.service.UserAccountSystemService.UserService;
+import com.acme.studenthome.domain.model.UserAccountSystem.Auth.User;
+import com.acme.studenthome.domain.service.UserAccountSystemService.Auth.UserService;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,7 +36,7 @@ public class UserControllerTest {
     void testGetUserById() throws Exception {
         User user = new User();
         user.setId((long) 1);
-        user.setEmail("magotor130@gmail.com");
+        user.setUsername("magotor130@gmail.com");
         user.setPassword("pacheco98");
         doReturn(Optional.of(user)).when(userService).getUserById((long) 1);
 
@@ -62,11 +62,11 @@ public class UserControllerTest {
     @DisplayName("POST /api/users")
     void testUserSave() throws Exception{
         User userToPost = new User();
-        userToPost.setEmail("magotor1304@gmail.com");
+        userToPost.setUsername("magotor1304@gmail.com");
         userToPost.setPassword("pacheco98");
         User userToReturn = new User();
         userToReturn.setId((long) 1);
-        userToReturn.setEmail("magotor1304@gmail.com");
+        userToReturn.setUsername("magotor1304@gmail.com");
         userToReturn.setPassword("pacheco98");
         Gson gson = new Gson();
         doReturn(userToReturn).when(userService).createUser(any());

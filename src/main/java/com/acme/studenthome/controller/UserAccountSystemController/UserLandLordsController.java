@@ -96,7 +96,7 @@ public class UserLandLordsController {
             @Override
             protected void configure() {
                 map().setSubscriptionName(source.getSubscription().getName());
-                map().setEmail(source.getUser().getEmail());
+                map().setEmail(source.getUser().getUsername());
             }
         });
     }

@@ -1,8 +1,8 @@
 package com.acme.studenthome.domain.model.PropertiesSystem;
 
-public enum RequestStatus {
+public enum EContractStatus {
     UNRESOLVED,
-    ACCEPTED,
-    DENIED,
+    ACTIVE,
+    CONCLUDED,
     CANCELED
 }

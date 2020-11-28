@@ -1,7 +1,7 @@
 package com.acme.studenthome.service.PropertiesSystemService;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Contract;
-import com.acme.studenthome.domain.model.PropertiesSystem.ContractStatus;
+import com.acme.studenthome.domain.model.PropertiesSystem.EContractStatus;
 import com.acme.studenthome.domain.model.PropertiesSystem.Property;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
 import com.acme.studenthome.domain.repository.PropertiesSystemRepository.ContractRepository;
@@ -34,7 +34,7 @@ public class ContractServiceImpl implements ContractService {
                         new ResourceNotFoundException("Property", "Id", propertyId));
         contract.setStudent(student);
         contract.setProperty(property);
-        contract.setState(ContractStatus.UNRESOLVED);
+        contract.setState(EContractStatus.UNRESOLVED);
         return  contractRepository.save(contract);
     }
 
@@ -83,7 +83,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
-    public Contract updateStateOfContract(Long contractId, ContractStatus state) {
+    public Contract updateStateOfContract(Long contractId, EContractStatus state) {
         Contract contract = contractRepository.findById(contractId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Contract", "Id", contractId));

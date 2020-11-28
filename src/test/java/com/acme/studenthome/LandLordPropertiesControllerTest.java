@@ -1,10 +1,8 @@
 package com.acme.studenthome;
 
 import com.acme.studenthome.domain.model.PropertiesSystem.Property;
-import com.acme.studenthome.domain.model.UserAccountSystem.User;
 import com.acme.studenthome.domain.repository.LocationsSystemRepository.DistrictRepository;
 import com.acme.studenthome.domain.service.PropertiesSystemService.PropertyService;
-import com.acme.studenthome.domain.service.UserAccountSystemService.UserService;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,8 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
-import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;

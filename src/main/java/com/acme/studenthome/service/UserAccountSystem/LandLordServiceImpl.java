@@ -2,10 +2,10 @@ package com.acme.studenthome.service.UserAccountSystem;
 
 import com.acme.studenthome.domain.model.SuscriptionsSystem.Subscription;
 import com.acme.studenthome.domain.model.UserAccountSystem.LandLord;
-import com.acme.studenthome.domain.model.UserAccountSystem.User;
+import com.acme.studenthome.domain.model.UserAccountSystem.Auth.User;
 import com.acme.studenthome.domain.repository.SubscriptionSystemRepository.SubscriptionRepository;
 import com.acme.studenthome.domain.repository.UserAccountSystemRepository.LandLordRepository;
-import com.acme.studenthome.domain.repository.UserAccountSystemRepository.UserRepository;
+import com.acme.studenthome.domain.repository.UserAccountSystemRepository.Auth.UserRepository;
 import com.acme.studenthome.domain.service.UserAccountSystemService.LandLordService;
 import com.acme.studenthome.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
