@@ -6,8 +6,6 @@ import lombok.Data;
 public class EducationCenterResource {
     private Long id;
 
-    private Long id;
-
     private String name;
 
     private String address;
