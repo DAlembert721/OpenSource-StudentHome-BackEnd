@@ -35,7 +35,7 @@ public class PaymentsController {
     @Operation(summary = "Post Payment",
             description = "Post A New Payment",
             tags = "contracts")
-    @PostMapping("/contacts/{contractId}/payments")
+    @PostMapping("/contracts/{contractId}/payments")
     public PaymentResource createPayment(
             @PathVariable(name = "contractId") Long contractId,
             @RequestBody @Valid SavePaymentResource paymentResource) {
@@ -52,6 +52,16 @@ public class PaymentsController {
             @RequestBody @Valid SavePaymentResource paymentResource) {
         Payment payment = convertToEntity(paymentResource);
         return convertToResource(paymentService.updatePayment(paymentId, payment));
+    }
+
+    @Operation(summary = "Update Check Payment By Payment Id",
+            description = "Check A Payment given a Id",
+            tags = "payments")
+    @PutMapping("/payments/{paymentId}/check={check}")
+    public PaymentResource updateCheckPayment(
+            @PathVariable(name = "paymentId") Long paymentId,
+            @PathVariable(name = "check") Boolean check) {
+        return convertToResource(paymentService.checkPayment(paymentId, check));
     }
 
     @Operation(summary = "Delete Payment By Payment Id",

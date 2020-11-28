@@ -30,6 +30,7 @@ public class PaymentServiceImpl implements PaymentService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Contract", "Id", contractId));
         payment.setContract(contract);
+        payment.setChecked(false);
         return paymentRepository.save(payment);
     }
 
@@ -47,6 +48,15 @@ public class PaymentServiceImpl implements PaymentService {
                         new ResourceNotFoundException("Payment", "Id", paymentId));
         payment.setChecked(resource.getChecked());
         payment.setImage(resource.getImage());
+        return paymentRepository.save(payment);
+    }
+
+    @Override
+    public Payment checkPayment(Long paymentId, Boolean check) {
+        Payment payment = paymentRepository.findById(paymentId)
+                .orElseThrow(() ->
+                    new ResourceNotFoundException("Payment", "Id", paymentId));
+        payment.setChecked(check);
         return paymentRepository.save(payment);
     }
 

@@ -12,12 +12,10 @@ public class SavePaymentResource {
 
 
     @NotNull
-    private Float amount;
+    private Float pay;
 
     @NotNull
     @Size(max = 250)
     private String image;
 
-    @NotNull
-    private Boolean checked;
 }

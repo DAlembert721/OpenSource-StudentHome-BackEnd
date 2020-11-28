@@ -1,5 +1,6 @@
 package com.acme.studenthome.domain.model.PropertiesSystem;
 
+import com.acme.studenthome.domain.model.AuditModel;
 import com.acme.studenthome.domain.model.LocationsSystem.District;
 import com.acme.studenthome.domain.model.UserAccountSystem.StudentSystem.Student;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "payments")
 @Data
-public class Payment {
+public class Payment extends AuditModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +22,10 @@ public class Payment {
     @NotNull
     @Size(max = 250)
     private String image;
+
+    @NotNull
+    private Float pay;
+
 
     @NotNull
     private Boolean checked;
