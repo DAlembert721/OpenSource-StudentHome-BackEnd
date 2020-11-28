@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api")
+@RequestMapping("/api/location")
 public class RegionProvincesController {
 
     @Autowired
