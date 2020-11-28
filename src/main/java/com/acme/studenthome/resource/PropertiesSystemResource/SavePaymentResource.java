@@ -18,4 +18,7 @@ public class SavePaymentResource {
     @Size(max = 250)
     private String image;
 
+    @Size(max = 250)
+    private String comment;
+
 }

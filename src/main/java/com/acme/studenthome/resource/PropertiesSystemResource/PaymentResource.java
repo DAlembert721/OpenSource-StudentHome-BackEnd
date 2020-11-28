@@ -14,6 +14,8 @@ public class PaymentResource {
 
     private String image;
 
+    private String comment;
+
     private Boolean checked;
 
     private Date createdAt;
